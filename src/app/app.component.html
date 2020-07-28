@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="col-md-offset-1">
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span><img src="./favicon.ico"></span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <button mat-button routerLink="/tweets/matD">Get Tweets</button>
+        <button mat-button routerLink="/blogs/view">Elastic</button>
+        <button mat-button routerLink="/">Back</button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  <!--<a routerLink="/tweets">List Tweets</a>
+  <a routerLink="/tweets/matD">List First Tweets</a>
+  <br/>-->
+  <router-outlet></router-outlet>
+</div>
+

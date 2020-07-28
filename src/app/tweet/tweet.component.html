@@ -1,0 +1,73 @@
+<!--<div>
+    <h2> Tweet Details {{dataSource}}</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>user</th>
+      <th>createdAt</th>
+      <th>userLocation</th>
+      <th>location</th>
+      <th>tweetText</th>
+      <th>hashtags</th>
+      <th>retweet</th>
+      <th>language</th>
+      <th>sentiment</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tweet of tweets">
+      <td class="hidden">{{tweet.id}}</td>
+      <th>{{tweet.user}}</th>
+      <th>{{tweet.createdAt}}</th>
+      <th>{{tweet.userLocation}}</th>
+      <th>{{tweet.location}}</th>
+      <th>{{tweet.tweetText}}</th>
+      <th>{{tweet.hashtags}}</th>
+      <th>{{tweet.retweet}}</th>
+      <th>{{tweet.language}}</th>
+      <th>{{tweet.sentiment}}</th>
+      <td><button class="btn btn-danger" (click)="deleteTweet(tweet)"> Delete Tweet</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>-->
+
+<div>
+  <h2> Tweet Details {{dataSource}}</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th class="hidden">Id</th>
+      <th>user</th>
+      <th>createdAt</th>
+      <th>userLocation</th>
+      <th>location</th>
+      <th>tweetText</th>
+      <th>hashtags</th>
+      <th>retweet</th>
+      <th>language</th>
+      <th>sentiment</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tweet of tweets">
+      <td class="hidden">{{tweet.id}}</td>
+      <th>{{tweet.user}}</th>
+      <th>{{tweet.createdAt}}</th>
+      <th>{{tweet.userLocation}}</th>
+      <th>{{tweet.location}}</th>
+      <th>{{tweet.tweetText}}</th>
+      <th>{{tweet.hashtags}}</th>
+      <th>{{tweet.retweet}}</th>
+      <th>{{tweet.language}}</th>
+      <th>{{tweet.sentiment}}</th>
+      <td><button class="btn btn-danger" (click)="deleteTweet(tweet)"> Delete Tweet</button></td>
+    </tr>
+    </tbody>
+  </table>
+  
+</div>
+

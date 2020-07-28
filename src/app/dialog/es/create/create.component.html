@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Create Blog</h1>
+<div>
+<form [formGroup]="addBlogForm">
+<div mat-dialog-content>
+  <p>Post to Elastic</p>
+  <mat-form-field>
+    <mat-label>User Id</mat-label>
+    <input matInput [(ngModel)]="data.user_id" formControlName="userId">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Post Text</mat-label>
+    <input matInput [(ngModel)]="data.post_text" formControlName="postText">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Post Date</mat-label>
+    <input matInput [(ngModel)]="data.post_date" formControlName="postDate">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Settins Hobby</mat-label>
+    <input matInput [(ngModel)]="data.blogSettings.hobby" formControlName="hobby">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Settins Occupation</mat-label>
+    <input matInput [(ngModel)]="data.blogSettings.occupation" formControlName="occupation">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Settins Gender</mat-label>
+    <input matInput [(ngModel)]="data.blogSettings.gender" formControlName="gender">
+  </mat-form-field>
+  
+  
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.post_text" (click)="createPost(data)" cdkFocusInitial>Create</button>
+</div>
+</form>
+</div>

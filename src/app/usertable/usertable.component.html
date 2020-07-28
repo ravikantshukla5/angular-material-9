@@ -1,0 +1,139 @@
+<!--<div class="mat-elevation-z8">
+  <h1>Live Tweets from Twitter</h1>
+  <table mat-table [dataSource]="dataSource"
+  matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> User </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Created At </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userLocation">
+      <th mat-header-cell *matHeaderCellDef> User Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.userLocation}} </td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tweetText">
+      <th mat-header-cell *matHeaderCellDef> Tweet Text</th>
+      <td mat-cell *matCellDef="let element"> {{element.tweetText}} </td>
+    </ng-container>
+    <ng-container matColumnDef="hashtags">
+      <th mat-header-cell *matHeaderCellDef> Hashtags </th>
+      <td mat-cell *matCellDef="let element"> {{element.hashtags}} </td>
+    </ng-container>
+    <ng-container matColumnDef="retweet">
+      <th mat-header-cell *matHeaderCellDef> Retweet </th>
+      <td mat-cell *matCellDef="let element"> {{element.reTweets}} </td>
+    </ng-container>
+    <ng-container matColumnDef="language">
+      <th mat-header-cell *matHeaderCellDef> Language </th>
+      <td mat-cell *matCellDef="let element"> {{element.language}} </td>
+    </ng-container>
+    <ng-container matColumnDef="sentiment">
+      <th mat-header-cell *matHeaderCellDef> Sentiment </th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{ 'negative' : element.sentiment == 'NEGATIVE',
+                                                          'positive' : element.sentiment == 'POSITIVE',
+                                                          'neutral' : element.sentiment == 'NEUTRAL'}"> {{element.sentiment}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" > <button mat-raised-button (click)="deleteTweetMat(element)">Delete</button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+ <mat-paginator [length]="25"
+                [pageIndex]="0"
+                [pageSize]="25" [pageSizeOptions]="[5, 10, 100,500]" showFirstLastButtons>
+  </mat-paginator>
+
+</div> -->
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      Live Tweets from Twitter
+    </div>
+  </div>
+
+  <div class="example-table-container">
+
+    <table mat-table [dataSource]="dataSource" class="example-table"
+           matSort matSortActive="user" matSortDisableClear matSortDirection="desc">
+      <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header disableClear> User </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Created At </th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="userLocation">
+      <th mat-header-cell *matHeaderCellDef> User Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.userLocation}} </td>
+    </ng-container>
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef> Location </th>
+      <td mat-cell *matCellDef="let element"> {{element.location}} </td>
+    </ng-container>
+    <ng-container matColumnDef="tweetText">
+      <th mat-header-cell *matHeaderCellDef> Tweet Text</th>
+      <td mat-cell *matCellDef="let element"> {{element.tweetText}} </td>
+    </ng-container>
+    <ng-container matColumnDef="hashtags">
+      <th mat-header-cell *matHeaderCellDef> Hashtags </th>
+      <td mat-cell *matCellDef="let element"> {{element.hashtags}} </td>
+    </ng-container>
+    <ng-container matColumnDef="retweet">
+      <th mat-header-cell *matHeaderCellDef> Retweet </th>
+      <td mat-cell *matCellDef="let element"> {{element.reTweets}} </td>
+    </ng-container>
+    <ng-container matColumnDef="language">
+      <th mat-header-cell *matHeaderCellDef> Language </th>
+      <td mat-cell *matCellDef="let element"> {{element.language}} </td>
+    </ng-container>
+    <ng-container matColumnDef="sentiment">
+      <th mat-header-cell *matHeaderCellDef> Sentiment </th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{ 'negative' : element.sentiment == 'NEGATIVE',
+                                                          'positive' : element.sentiment == 'POSITIVE',
+                                                          'neutral' : element.sentiment == 'NEUTRAL'}"> {{element.sentiment}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" > <button mat-raised-button (click)="deleteTweetMat(element)">Delete</button></td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator  [length]="resultsLength" [pageSize]="pageSize"></mat-paginator>
+</div>
+
